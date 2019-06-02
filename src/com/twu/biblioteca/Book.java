@@ -1,3 +1,7 @@
+/**
+ * Book object file.
+ */
+
 package com.twu.biblioteca;
 
 public class Book {
