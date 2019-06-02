@@ -2,7 +2,7 @@ package com.twu.biblioteca;
 
 import java.util.LinkedList;
 
-public class BookList extends ItemList {
+public class BookList implements ItemList {
     private LinkedList<Book> BList = new LinkedList<Book>();
     private Book a = new Book();
     private Book b = new Book();
@@ -27,4 +27,13 @@ public class BookList extends ItemList {
         System.out.println("Book list was instantiated.");
     }
 
+    public void displayList() {
+        for(int i = 0; i < BList.size(); i++) {
+            Book toShow = BList.get(i);
+            System.out.println(toShow.getTitle());
+            System.out.println(toShow.getAuthor());
+            System.out.println(toShow.getPublishDate());
+            System.out.println(toShow.getIsCheckedOut());
+        }
+    }
 }

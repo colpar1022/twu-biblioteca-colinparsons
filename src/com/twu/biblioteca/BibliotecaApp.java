@@ -24,7 +24,7 @@ public class BibliotecaApp {
             switch (optionNum) {
                 case 1:
                     System.out.println("User requested Book List");
-                    System.out.println(BList);
+                    BList.displayList();
                     break;
                 case 2:
                     System.out.println("User requested to end program");
