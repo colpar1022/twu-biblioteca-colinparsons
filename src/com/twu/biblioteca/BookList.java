@@ -26,18 +26,15 @@ public class BookList implements ItemList {
     }
 
     public void displayList() {
-        System.out.println("------------------------------------------------------------------------------------------");
-        System.out.printf("%5s %30s %30s %10s %5s", "OPTION", "TITLE", "AUTHOR", "PUBLISHED", "AVAILABLE");
-        System.out.println("\n------------------------------------------------------------------------------------------");
+        System.out.println("+------+-------------------------------+-------------------------------+-----------+-----------+");
+        System.out.printf("|%5s| %30s| %30s| %10s| %10s|", "OPTION", "TITLE", "AUTHOR", "PUBLISHED", "AVAILABLE");
+        System.out.println("\n+------+-------------------------------+-------------------------------+-----------+-----------+");
         for(int i = 0; i < BList.size(); i++) {
             Book toShow = BList.get(i);
-            System.out.format("%5d %30s %30s %10d %10b", i, toShow.getTitle(), toShow.getAuthor(), toShow.getPublishDate(),
+            System.out.format("|%6d| %30s| %30s| %10d| %10b|", i, toShow.getTitle(), toShow.getAuthor(), toShow.getPublishDate(),
                     toShow.getIsCheckedOut());
             System.out.println();
-            //System.out.println("Title: " + toShow.getTitle());
-            //System.out.println("Author: " + toShow.getAuthor());
-            //System.out.println("Publish Date: " + toShow.getPublishDate());
-            //System.out.println("Is checked out: " + toShow.getIsCheckedOut() + "\n");
+            System.out.println("+------+-------------------------------+-------------------------------+-----------+-----------+");
         }
     }
 }

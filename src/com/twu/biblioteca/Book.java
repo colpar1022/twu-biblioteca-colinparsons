@@ -11,7 +11,7 @@ public class Book{
     private Boolean isCheckedOut;
 
     public Book(){
-        isCheckedOut = false;
+        isCheckedOut = true;
     }
 
     public String getTitle(){
