@@ -4,7 +4,7 @@
 
 package com.twu.biblioteca;
 
-public class Book {
+public class Book{
     private String title;
     private String author;
     private int publishDate;
@@ -22,6 +22,9 @@ public class Book {
     }
     public int getPublishDate(){
         return publishDate;
+    }
+    public Boolean getIsCheckedOut(){
+        return isCheckedOut;
     }
 
     public void setTitle(String newTitle){

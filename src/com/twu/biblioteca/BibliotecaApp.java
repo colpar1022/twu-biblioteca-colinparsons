@@ -12,6 +12,7 @@ public class BibliotecaApp {
     public static void main(String[] args) {
         Scanner userOption = new Scanner(System.in);
         boolean bail = false;
+        ItemList BList = new BookList();
 
         System.out.println("\nWelcome to the Biblioteca. \nYour one-stop-shop for great book titles in Bangalore!\n");
         System.out.println("Main Menu:\n1. Book List\n2. Exit Program");
@@ -23,6 +24,7 @@ public class BibliotecaApp {
             switch (optionNum) {
                 case 1:
                     System.out.println("User requested Book List");
+                    System.out.println(BList);
                     break;
                 case 2:
                     System.out.println("User requested to end program");

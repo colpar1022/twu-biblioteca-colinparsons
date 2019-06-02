@@ -6,10 +6,11 @@ package com.twu.biblioteca;
 
 import java.util.LinkedList;
 
-public class ItemList {
+public class ItemList extends LinkedList{
     private LinkedList list;
 
-    public LinkedList getList(){
+    public LinkedList getList(LinkedList name){
         return list;
     }
+
 }
