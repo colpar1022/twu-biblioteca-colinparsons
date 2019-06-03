@@ -16,7 +16,7 @@ public class BibliotecaApp {
 
         System.out.println("\nWelcome to the Biblioteca. \nYour one-stop-shop for great book titles in Bangalore!\n");
         System.out.println("Main Menu:\n1. Book List\n2. Exit Program");
-
+        //Option selection controller
         while(!bail) {
             System.out.println("\nEnter the corresponding number for what you would like to do: ");
             int optionNum = userOption.nextInt();

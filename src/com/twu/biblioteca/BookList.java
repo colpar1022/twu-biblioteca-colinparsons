@@ -30,6 +30,12 @@ public class BookList implements ItemList {
         BList.add(e);
     }
 
+    /**
+     * Displays the book list for viewing.
+     * Provides the user with selection options by calling listOptions.
+     * Books that available for checkout are set as true in the Availability column.
+     * Books that are not available for checkout are set to false in the Availability column.
+     */
     public void displayList() {
         System.out.println("+------+-------------------------------+-------------------------------+-----------+-----------+");
         System.out.printf("|%5s| %30s| %30s| %10s| %10s|", "OPTION", "TITLE", "AUTHOR", "PUBLISHED", "AVAILABLE");
@@ -44,30 +50,36 @@ public class BookList implements ItemList {
         listOptions();
     }
 
+    /**
+     * Acts as the main controller for the Book List.
+     * If the user wants to leave at any point, they will type the number 0.
+     * The nextInt that scoob takes in is decremented by one in order to prevent "off by 1" errors.
+     * "selected" is a temporary Book object used to implement the functionality.
+     */
     public void listOptions(){
-        Boolean bail = false;
-        Scanner scoob = new Scanner(System.in);
+        Boolean bail = false;   //Used for loop control when options are being selected.
+        Scanner scoob = new Scanner(System.in); //Scanner scoob sniffs for the user's selection.
 
         System.out.println("Type in the option number to see more options...or type 0 to go back to exit the program: ");
 
         int bookSelection = (scoob.nextInt() - 1);
-        if (bookSelection == -1) {
+        if (bookSelection == -1) {  //Fires if the user requests to end the program.
             System.out.println("User has requested to end the program.");
-            System.exit(0);
-        } else if (bookSelection < -1 || bookSelection >= BList.size()) {
+            System.exit(0);     //Effectively ends the program at the user's request.
+        } else if (bookSelection < -1 || bookSelection >= BList.size()) {   //Fires when the user enters and invalid option
             System.out.println("Please select a valid option!");
             displayList();
-        } else {
-            Book selected = BList.get(bookSelection);
+        } else {    //Fires when the user enters a valid option.
+            Book selected = BList.get(bookSelection);   //Temporary Book object used for functionality in house.
 
             System.out.println("Please enter the number of the action you would like to perform on " +
                     selected.getTitle() + ":");
             System.out.println("1. Checkout Book\n2. Return Book\n3. Return to Book List");
 
-            while (!bail) {
+            while (!bail) {     //Will run as long as the user continues to enter invalid options.
                 int userSelection = scoob.nextInt();
                 switch (userSelection) {
-                    case 1:
+                    case 1:     //Fires when user requests to checkout a book.
                         System.out.println("User requested to checkout a book.");
                         if(!selected.getIsCheckedOut()){
                             System.out.println("Sorry, that book is not available.");
@@ -78,7 +90,7 @@ public class BookList implements ItemList {
                         bail = true;
                         displayList();
                         break;
-                    case 2:
+                    case 2:     //Fires when the user requests to return a book
                         System.out.println("User requested to return a book.");
                         if(selected.getIsCheckedOut()){
                             System.out.println("This is not a valid book to return. It may already be available.");
@@ -89,7 +101,7 @@ public class BookList implements ItemList {
                         bail = true;
                         displayList();
                         break;
-                    case 3:
+                    case 3:     //Fires when the user requests to return to the Book List.
                         System.out.println("User requested to return to Book List.");
                         bail = true;
                         displayList();
@@ -99,6 +111,6 @@ public class BookList implements ItemList {
                 }
             }
         }
-        scoob.close();
+        scoob.close();      //Lets scoob go to sleep.
     }
 }
