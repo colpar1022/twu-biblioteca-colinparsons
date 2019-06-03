@@ -10,6 +10,7 @@ import java.util.Scanner;
 public class BibliotecaApp {
 
     public static void main(String[] args) {
+        SecurityGuard blart = new SecurityGuard();  //This security guard is used to ensure proper input from user.
         Scanner userOption = new Scanner(System.in);
         boolean bail = false;
         ItemList BList = new BookList();
@@ -19,7 +20,7 @@ public class BibliotecaApp {
         //Option selection controller
         while(!bail) {
             System.out.println("\nEnter the corresponding number for what you would like to do: ");
-            int optionNum = userOption.nextInt();
+            int optionNum = blart.checkForInt(userOption);
 
             switch (optionNum) {
                 case 1:

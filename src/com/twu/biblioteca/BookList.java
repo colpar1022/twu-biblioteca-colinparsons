@@ -8,6 +8,7 @@ import java.util.LinkedList;
 import java.util.Scanner;
 
 public class BookList implements ItemList {
+    SecurityGuard blart = new SecurityGuard();
     private LinkedList<Book> BList = new LinkedList<Book>();
     private Book a = new Book();
     private Book b = new Book();
@@ -62,11 +63,12 @@ public class BookList implements ItemList {
 
         System.out.println("Type in the option number to see more options...or type 0 to go back to exit the program: ");
 
-        int bookSelection = (scoob.nextInt() - 1);
+        int bookSelection = blart.checkForInt(scoob);
+        bookSelection = bookSelection - 1;
         if (bookSelection == -1) {  //Fires if the user requests to end the program.
             System.out.println("User has requested to end the program.");
             System.exit(0);     //Effectively ends the program at the user's request.
-        } else if (bookSelection < -1 || bookSelection >= BList.size()) {   //Fires when the user enters and invalid option
+        } else if (bookSelection < -1 || bookSelection >= BList.size()) {   //Fires when the user enters an out of bounds integer
             System.out.println("Please select a valid option!");
             displayList();
         } else {    //Fires when the user enters a valid option.
@@ -77,7 +79,7 @@ public class BookList implements ItemList {
             System.out.println("1. Checkout Book\n2. Return Book\n3. Return to Book List");
 
             while (!bail) {     //Will run as long as the user continues to enter invalid options.
-                int userSelection = scoob.nextInt();
+                int userSelection = blart.checkForInt(scoob);
                 switch (userSelection) {
                     case 1:     //Fires when user requests to checkout a book.
                         System.out.println("User requested to checkout a book.");
