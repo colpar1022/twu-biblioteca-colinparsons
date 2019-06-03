@@ -6,4 +6,5 @@ package com.twu.biblioteca;
 
 public interface ItemList{
     void displayList();
+    void listOptions();
 }
