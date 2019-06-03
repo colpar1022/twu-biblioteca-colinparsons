@@ -47,28 +47,45 @@ public class BookList implements ItemList {
     public void listOptions(){
         Boolean bail = false;
         Scanner scoob = new Scanner(System.in);
-        System.out.println("Type in the option number to see more options...or type 0 to go back to exit the program: ");
-        int bookSelection = (scoob.nextInt() - 1);
 
-        if(bookSelection == -1){
+        System.out.println("Type in the option number to see more options...or type 0 to go back to exit the program: ");
+
+        int bookSelection = (scoob.nextInt() - 1);
+        if (bookSelection == -1) {
             System.out.println("User has requested to end the program.");
             System.exit(0);
-        }else if(bookSelection < -1 || bookSelection >= BList.size()){
+        } else if (bookSelection < -1 || bookSelection >= BList.size()) {
             System.out.println("Please select a valid option!");
-        }else{
-            System.out.println("Please enter the number of the action you would like to perform:");
+            displayList();
+        } else {
+            Book selected = BList.get(bookSelection);
+
+            System.out.println("Please enter the number of the action you would like to perform on " +
+                    selected.getTitle() + ":");
             System.out.println("1. Checkout Book\n2. Return Book\n3. Return to Book List");
 
-            while(!bail) {
+            while (!bail) {
                 int userSelection = scoob.nextInt();
                 switch (userSelection) {
                     case 1:
                         System.out.println("User requested to checkout a book.");
+                        if(!selected.getIsCheckedOut()){
+                            System.out.println("Sorry, that book is not available.");
+                        }else {
+                            selected.setIsCheckedOut(false);
+                            System.out.println("Thank you! Enjoy the book.");
+                        }
                         bail = true;
                         displayList();
                         break;
                     case 2:
                         System.out.println("User requested to return a book.");
+                        if(selected.getIsCheckedOut()){
+                            System.out.println("This is not a valid book to return. It may already be available.");
+                        }else {
+                            selected.setIsCheckedOut(true);
+                            System.out.println("Thank you for returning the book.");
+                        }
                         bail = true;
                         displayList();
                         break;

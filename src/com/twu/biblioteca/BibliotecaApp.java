@@ -1,7 +1,7 @@
 /**
  * Author: Colin Parsons
  * Biblioteca Main
- * Version: 0.2
+ * Version: 1.0.0
  * Copyright
  */
 package com.twu.biblioteca;
