@@ -8,7 +8,7 @@ import java.util.LinkedList;
 import java.util.Scanner;
 
 public class BookList implements ItemList {
-    SecurityGuard blart = new SecurityGuard();
+    SecurityGuard blart = new SecurityGuard();  //This security guard is used to ensure proper input.
     private LinkedList<Book> BList = new LinkedList<Book>();
     private Book a = new Book();
     private Book b = new Book();
