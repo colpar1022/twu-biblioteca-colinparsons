@@ -15,8 +15,12 @@ public class BibliotecaApp {
         boolean bail = false;
         ItemList BList = new BookList();
         ItemList MList = new MovieList();
+        UserList UList = new UserList();
 
         System.out.println("\nWelcome to the Biblioteca. \nYour one-stop-shop for great book and movie titles in Bangalore!\n");
+
+        UList.checkUser();
+
         System.out.println("Main Menu:\n1. Book List\n2. Movie List\n3. Exit Program");
         //Option selection controller
         while(!bail) {

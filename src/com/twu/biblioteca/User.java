@@ -6,7 +6,7 @@ public class User {
     private String password;
     private String phoneNumber;
     private String libNumber;
-    
+
     public User(){ }
 
     public String getName(){
