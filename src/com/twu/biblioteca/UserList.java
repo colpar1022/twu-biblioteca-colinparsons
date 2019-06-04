@@ -3,7 +3,7 @@ package com.twu.biblioteca;
 import java.util.LinkedList;
 import java.util.Scanner;
 
-public class UserList implements ItemList{
+public class UserList{
     Scanner gord = new Scanner(System.in);
     SecurityGuard blart = new SecurityGuard();  //This security guard is used to ensure proper input.
     private LinkedList<User> UList = new LinkedList<>();
@@ -20,24 +20,21 @@ public class UserList implements ItemList{
         UList.add(b);
     }
 
-    public void displayList() {
+    public void displayList(User toShow) {
         System.out.println("+--------------------+-------------------------------+----------------+------------+-----------+");
         System.out.printf("|%20s| %30s| %15s| %10s| %10s|", "1. NAME", "2. EMAIL", "3. PHONE NUMBER", "4. PASSWORD", "LIBRARY #");
         System.out.println("\n+--------------------+-------------------------------+----------------+------------+-----------+");
-        for(int i = 0; i < UList.size(); i++) {
-            User toShow = UList.get(i);
-            System.out.format("|%20s| %30s| %15s| %11s| %10s|", toShow.getName(), toShow.getEmail(), toShow.getPhoneNumber(),
-                    toShow.getPassword(), toShow.getLibNumber());
-            System.out.println();
-            System.out.println("+--------------------+-------------------------------+----------------+------------+-----------+");
-        }
+        System.out.format("|%20s| %30s| %15s| %11s| %10s|", toShow.getName(), toShow.getEmail(), toShow.getPhoneNumber(),
+                toShow.getPassword(), toShow.getLibNumber());
+        System.out.println();
+        System.out.println("+--------------------+-------------------------------+----------------+------------+-----------+");
         listOptions();
     }
     public void listOptions(){
         //more stuff
     }
 
-    public void checkUser(){
+    public User checkUser(){
         Boolean inList = false;
         System.out.println("Please enter your Library number to continue.");
         String userLibNumber = gord.nextLine();
@@ -55,6 +52,7 @@ public class UserList implements ItemList{
                         System.out.println("User authorized.");
                         g = 3;
                         i = UList.size();
+                        return checkIn;
                     } else {
                         System.out.println("Incorrect password, please try again: ");
                         if(g == 2){
@@ -70,5 +68,6 @@ public class UserList implements ItemList{
             System.out.println("Program aborting.");
             System.exit(0);
         }
+        return null;
     }
 }

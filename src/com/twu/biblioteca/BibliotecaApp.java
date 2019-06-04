@@ -18,7 +18,7 @@ public class BibliotecaApp {
         UserList UList = new UserList();
         System.out.println("\nWelcome to the Biblioteca. \nYour one-stop-shop for great book and movie titles in Bangalore!\n");
 
-        UList.checkUser();
+        User loggedIn = UList.checkUser();
 
         System.out.println("Main Menu:\n1. Book List\n2. Movie List\n3. View Profile\n4. Exit Program");
         //Option selection controller
@@ -37,7 +37,7 @@ public class BibliotecaApp {
                     break;
                 case 3:
                     System.out.println("User requested to view profile");
-                    UList.displayList();
+                    UList.displayList(loggedIn);
                     break;
                 case 4:
                     System.out.println("User requested to end program");
