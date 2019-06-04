@@ -16,8 +16,8 @@ public class BibliotecaApp {
         ItemList BList = new BookList();
         ItemList MList = new MovieList();
 
-        System.out.println("\nWelcome to the Biblioteca. \nYour one-stop-shop for great book titles in Bangalore!\n");
-        System.out.println("Main Menu:\n1. Book List\n2. Exit Program");
+        System.out.println("\nWelcome to the Biblioteca. \nYour one-stop-shop for great book and movie titles in Bangalore!\n");
+        System.out.println("Main Menu:\n1. Book List\n2. Movie List\n3. Exit Program");
         //Option selection controller
         while(!bail) {
             System.out.println("\nEnter the corresponding number for what you would like to do: ");
@@ -29,6 +29,10 @@ public class BibliotecaApp {
                     BList.displayList();
                     break;
                 case 2:
+                    System.out.println("User requested Movie List");
+                    MList.displayList();
+                    break;
+                case 3:
                     System.out.println("User requested to end program");
                     bail = true;
                     break;

@@ -26,6 +26,9 @@ public class Movie {
     public String getRating(){
         return rating;
     }
+    public Boolean getIsCheckedOut(){
+        return isCheckedOut;
+    }
 
     public void setTitle(String newTitle){
         if(newTitle.length() < 1){

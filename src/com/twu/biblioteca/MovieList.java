@@ -26,7 +26,17 @@ public class MovieList implements ItemList {
     }
 
     public void displayList(){
-
+        System.out.println("+------+-------------------------------+-------------------------------+-----------+-----------+");
+        System.out.printf("|%5s| %30s| %30s| %10s| %10s| %10s|", "OPTION", "TITLE", "DIRECTOR", "YEAR", "RATING", "AVAILABLE");
+        System.out.println("\n+------+-------------------------------+-------------------------------+-----------+-----------+");
+        for(int i = 0; i < MList.size(); i++) {
+            Movie toShow = MList.get(i);
+            System.out.format("|%6d| %30s| %30s| %10d| %10s| %10b|", i + 1, toShow.getTitle(), toShow.getDirector(), toShow.getYear(),
+                    toShow.getRating(), toShow.getIsCheckedOut());
+            System.out.println();
+            System.out.println("+------+-------------------------------+-------------------------------+-----------+-----------+");
+        }
+        listOptions();
     }
 
     public void listOptions(){
