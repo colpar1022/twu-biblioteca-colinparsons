@@ -34,7 +34,7 @@ public class Movie {
             title = newTitle;
         }
     }
-    public void setAuthor(String newDirector){
+    public void setDirector(String newDirector){
         if(newDirector.length() < 1){
             System.out.println("Director has been left blank, please enter the director's name.");
         }else{
