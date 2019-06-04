@@ -47,10 +47,14 @@ public class UserList implements ItemList{
                         i = UList.size();
                     } else {
                         System.out.println("Incorrect password, please try again: ");
+                        if(g == 2){
+                            System.out.println("Max number of password attempts reached. Aborting program.");
+                            System.exit(0);
+                        }
                     }
                 }
             }
-            if(inList == false){
+            if(!inList){
                 System.out.println("System did not find the Library Number, please make sure to include the hyphen.");
                 System.out.println("Program aborting.");
                 System.exit(0);
