@@ -16,12 +16,11 @@ public class BibliotecaApp {
         ItemList BList = new BookList();
         ItemList MList = new MovieList();
         UserList UList = new UserList();
-
         System.out.println("\nWelcome to the Biblioteca. \nYour one-stop-shop for great book and movie titles in Bangalore!\n");
 
         UList.checkUser();
 
-        System.out.println("Main Menu:\n1. Book List\n2. Movie List\n3. Exit Program");
+        System.out.println("Main Menu:\n1. Book List\n2. Movie List\n3. View Profile\n4. Exit Program");
         //Option selection controller
         while(!bail) {
             System.out.println("\nEnter the corresponding number for what you would like to do: ");
@@ -37,6 +36,10 @@ public class BibliotecaApp {
                     MList.displayList();
                     break;
                 case 3:
+                    System.out.println("User requested to view profile");
+                    UList.displayList();
+                    break;
+                case 4:
                     System.out.println("User requested to end program");
                     bail = true;
                     break;

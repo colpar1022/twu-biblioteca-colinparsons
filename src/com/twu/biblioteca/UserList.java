@@ -21,7 +21,17 @@ public class UserList implements ItemList{
     }
 
     public void displayList() {
-        //stuff
+        System.out.println("+--------------------+-------------------------------+----------------+------------+-----------+");
+        System.out.printf("|%20s| %30s| %15s| %10s| %10s|", "1. NAME", "2. EMAIL", "3. PHONE NUMBER", "4. PASSWORD", "LIBRARY #");
+        System.out.println("\n+--------------------+-------------------------------+----------------+------------+-----------+");
+        for(int i = 0; i < UList.size(); i++) {
+            User toShow = UList.get(i);
+            System.out.format("|%20s| %30s| %15s| %11s| %10s|", toShow.getName(), toShow.getEmail(), toShow.getPhoneNumber(),
+                    toShow.getPassword(), toShow.getLibNumber());
+            System.out.println();
+            System.out.println("+--------------------+-------------------------------+----------------+------------+-----------+");
+        }
+        listOptions();
     }
     public void listOptions(){
         //more stuff
@@ -54,11 +64,11 @@ public class UserList implements ItemList{
                     }
                 }
             }
-            if(!inList){
-                System.out.println("System did not find the Library Number, please make sure to include the hyphen.");
-                System.out.println("Program aborting.");
-                System.exit(0);
-            }
+        }
+        if(!inList){
+            System.out.println("System did not find the Library Number, please make sure to include the hyphen.");
+            System.out.println("Program aborting.");
+            System.exit(0);
         }
     }
 }
