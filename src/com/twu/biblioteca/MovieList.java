@@ -55,7 +55,7 @@ public class MovieList implements ItemList {
             System.out.println("Please select a valid option!");
             displayList();
         } else {    //Fires when the user enters a valid option.
-            Movie selected = MList.get(movieSelection);   //Temporary Book object used for functionality in house.
+            Movie selected = MList.get(movieSelection);   //Temporary Movie object used for functionality in house.
 
             System.out.println("Please enter the number of the action you would like to perform on " +
                     selected.getTitle() + ":");
@@ -64,7 +64,7 @@ public class MovieList implements ItemList {
             while (!bail) {     //Will run as long as the user continues to enter invalid options.
                 int userSelection = blart.checkForInt(scoob);
                 switch (userSelection) {
-                    case 1:     //Fires when user requests to checkout a book.
+                    case 1:     //Fires when user requests to checkout a movie
                         System.out.println("User requested to checkout a movie.");
                         if(!selected.getIsCheckedOut()){
                             System.out.println("Sorry, that movie is not available.");
@@ -75,7 +75,7 @@ public class MovieList implements ItemList {
                         bail = true;
                         displayList();
                         break;
-                    case 2:     //Fires when the user requests to return a book
+                    case 2:     //Fires when the user requests to return a movie
                         System.out.println("User requested to return a movie.");
                         if(selected.getIsCheckedOut()){
                             System.out.println("This is not a valid movie to return. It may already be available.");
@@ -86,7 +86,7 @@ public class MovieList implements ItemList {
                         bail = true;
                         displayList();
                         break;
-                    case 3:     //Fires when the user requests to return to the Book List.
+                    case 3:     //Fires when the user requests to return to the Movie List.
                         System.out.println("User requested to return to Movie List.");
                         bail = true;
                         displayList();
