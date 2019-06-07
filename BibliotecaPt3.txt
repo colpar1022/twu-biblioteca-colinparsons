@@ -1,0 +1,78 @@
+Question 1:
+Answer: Anand Beck
+Query:
+SELECT name
+FROM member
+WHERE member.id IN(
+	SELECT member_id
+	FROM checkout_item
+	WHERE checkout_item.book_id IN(
+		SELECT id
+		FROM book
+		WHERE title = 'The Hobbit'));
+
+Question 2:
+Answer: 37
+Query:
+SELECT COUNT(name)
+FROM member
+WHERE member.id NOT IN(
+	SELECT member_id
+	FROM checkout_item);
+
+Question 3:
+Answer:
+	Books: Fellowship of the Ring, 1984, Tom Sawyer, Catcher in the Rye, To Kill a Mockingbird, Domain Driven Design
+	Movies: Thin Red Line, Crouching Tiger, Hidden Dragon, Lawrence of Arabia, Office Space
+Query:
+SELECT title
+FROM book
+WHERE book.title NOT IN(
+	SELECT title
+	FROM book
+	JOIN checkout_item
+	ON checkout_item.book_id = book.id);
+
+SELECT title
+FROM movie
+WHERE movie.title NOT IN(
+	SELECT title
+	FROM movie
+	JOIN checkout_item
+	ON checkout_item.movie_id = movie.id);
+
+Question 4:
+Answer:
+Query:
+INSERT INTO book (id, title)
+VALUES(11, 'The Pragmatic Programmer');
+
+INSERT INTO member (id, name)
+VALUES(43, 'Colin Parsons');
+
+INSERT INTO checkout_item(member_id, book_id, movie_id)
+VALUES(43, 11, NULL);
+
+SELECT name
+FROM member
+WHERE member.id IN(
+	SELECT member_id
+	FROM checkout_item
+	WHERE checkout_item.book_id IN(
+		SELECT id
+		FROM book
+		WHERE title = 'The Pragmatic Programmer'));
+
+Question 5:
+Answer: Anand Beck, Frank Smith
+Query:
+WITH amount_borrowed (name, amount)AS (
+
+	SELECT name, COUNT(member_id)
+	FROM member
+	JOIN checkout_item
+	ON member.id = checkout_item.member_id
+	GROUP BY member_id)
+SELECT name
+FROM amount_borrowed
+WHERE amount > 1;
